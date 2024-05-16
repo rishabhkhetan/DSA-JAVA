@@ -107,6 +107,21 @@ public class LinkedListIntro {
         System.out.println("null");
     }
 
+    int nthNodeFromEnd(int n){
+        NewNode refPointer = head;
+        NewNode mainPointer = head;
+        int count = 0;
+        while(count<n){
+            refPointer = refPointer.next;
+            count++;
+        }
+        while(refPointer!=null){
+            mainPointer=mainPointer.next;
+            refPointer=refPointer.next;
+        }
+        return mainPointer.data;
+    }
+
     public static void main(String[] args) {
         LinkedListIntro newLinkedList = new LinkedListIntro(4);
         newLinkedList.appendNode(6); // Correct way to call instance method
@@ -119,5 +134,6 @@ public class LinkedListIntro {
         newLinkedList.printNode(newLinkedList.head);
         newLinkedList.reverseLL();
         newLinkedList.printNode(newLinkedList.head);
+        System.out.println(newLinkedList.nthNodeFromEnd(3));
     }
 }
